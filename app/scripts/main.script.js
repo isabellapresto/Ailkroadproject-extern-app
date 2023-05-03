@@ -1,3 +1,21 @@
+// var requestOptions = {
+//   method: "GET",
+//   redirect: "follow",
+// };
+
+// fetch(
+//   "http://localhost/SilkRoadTwo/wp-json/wc/v3/products?oauth_consumer_key=ck_aa8f876f0bccfed923354648302d677eca4542c1&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1683116038&oauth_nonce=bIfvGyip75d&oauth_version=1.0&oauth_signature=t0uaKXtva5VezHuB17jN5d5VmPc%253D",
+//   requestOptions
+// )
+//   .then((response) => response.json())
+//   .then((result) => {
+//     const orderData = result;
+//     console.log(orderData);
+//     localStorage.setItem("data", JSON.stringify(orderData));
+//   })
+//   .catch((error) => console.log("error", error));
+
+
 document.addEventListener("DOMContentLoaded", function () {
   function renderData() {
     const localStorageData = JSON.parse(localStorage.getItem("data"));
