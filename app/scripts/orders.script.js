@@ -1,4 +1,4 @@
-if (localStorage.getItem("data")) {
+if (localStorage.getItem("orders")) {
   // If the data already exists in localStorage, do nothing
   console.log("Data already exists in localStorage");
 } else {
@@ -9,7 +9,7 @@ if (localStorage.getItem("data")) {
   };
 
   fetch(
-    "http://localhost/SilkRoadTwo/wp-json/wc/v3/products?oauth_consumer_key=ck_aa8f876f0bccfed923354648302d677eca4542c1&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1683116038&oauth_nonce=bIfvGyip75d&oauth_version=1.0&oauth_signature=t0uaKXtva5VezHuB17jN5d5VmPc%253D",
+    "http://localhost:8888/wp_inlamning2/wp-json/wc/v3/orders?oauth_consumer_key=ck_7065421a6cd1a33bc429e8cfc25117304629b353&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1683202251&oauth_nonce=IfyLTPeToJ5&oauth_version=1.0&oauth_signature=dd06D%252Ff4tQCd4d%252BFvmve5YTtryo%253D",
     requestOptions
   )
     .then((response) => response.json())
@@ -28,37 +28,40 @@ document.addEventListener("DOMContentLoaded", function () {
     container.classList.add("mainDiv");
 
     if (localStorageData) {
+
+      
       localStorageData.forEach((element) => {
-        console.log(element);
-        const dataDiv = document.createElement("div");
-        const nameHeader = document.createElement("h1");
-        const shortDescription = document.createElement("p");
+        const orderList = document.createElement('ul');
+        orderList.classList.add('listAnsvarig');
+        const orderItem = document.createElement('li')
+        const statusItem = document.createElement('li')
+        const totalSumItem = document.createElement('li')
+        const dateItem = document.createElement('li')
+        const customerItem = document.createElement('li')
 
-        nameHeader.innerHTML = element.name;
-        shortDescription.innerHTML = element.description;
+        orderItem.innerHTML = `Order ID; ${element.id}`
+        statusItem.innerHTML = `Order Status; ${element.status}`
+        totalSumItem.innerHTML = `Order Sum; ${element.total}`
+        dateItem.innerHTML = `Order Date; ${element.date_created}`
+        customerItem.innerHTML = `Full Name; ${element.billing.first_name} ${element.billing.last_name} `
 
-        const imgContainer = document.createElement("div");
-        imgContainer.classList.add("imgContainer");
-        dataDiv.appendChild(imgContainer);
+        orderList.appendChild(customerItem);
+        orderList.appendChild(orderItem);
+        orderList.appendChild(dateItem);
+        orderList.appendChild(totalSumItem);
+        orderList.appendChild(statusItem);
 
-        // grab the first image from each product and set its source
-        if (element.images && element.images.length > 0) {
-          const firstImage = element.images[0].src;
-          const img = document.createElement("img");
-          img.setAttribute("src", firstImage);
-          imgContainer.appendChild(img);
-        }
-
-        dataDiv.appendChild(nameHeader);
-        dataDiv.appendChild(shortDescription);
-        container.appendChild(dataDiv);
+        container.appendChild(orderList);
       });
+
+    
     } else {
-      container.innerHTML = "No data found in local storage";
-    }
+      container.innerHTML = "No data found in local storage"
+    };
 
     if (document.body) {
-      document.body.appendChild(container);
+      const main = document.querySelector('main')
+      main.appendChild(container)
     } else {
       console.error("Unable to append container element to document body");
     }
