@@ -9,7 +9,7 @@ if (localStorage.getItem("posts")) {
   };
 
   fetch(
-    "http://localhost/SilkRoadTwo/wp-json/wp/v2/posts?oauth_consumer_key=ck_aa8f876f0bccfed923354648302d677eca4542c1&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1683185561&oauth_nonce=ikQ0QGuKr40&oauth_version=1.0&oauth_signature=eud6JPjQ6XuA9mvh%252FcEE4S5jZCw%253D",
+    "http://localhost/SilkRoadTwo/wp-json/wp/v2/posts?oauth_consumer_key=ck_aa8f876f0bccfed923354648302d677eca4542c1&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1683188597&oauth_nonce=zctn8tCrmp9&oauth_version=1.0&oauth_signature=VCqLyCSPPU%252BWqOZwh%252F4M7M%252BwOQ0%253D",
     requestOptions
   )
     .then((response) => response.json())
@@ -40,16 +40,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const imgContainer = document.createElement("div");
         imgContainer.classList.add("imgContainer");
-        dataDiv.appendChild(imgContainer);
 
         // grab the first image from each product and set its source
-        if (element.images && element.images.length > 0) {
+        if (
+          element.featured_image_urls.thumbnail &&
+          element.featured_image_urls.thumbnail.length > 0
+        ) {
           const firstImage = element.featured_image_urls.thumbnail[0];
           const img = document.createElement("img");
           img.setAttribute("src", firstImage);
           imgContainer.appendChild(img);
         }
 
+        dataDiv.appendChild(imgContainer);
         dataDiv.appendChild(nameHeader);
         dataDiv.appendChild(shortDescription);
         container.appendChild(dataDiv);
