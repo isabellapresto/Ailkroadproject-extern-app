@@ -6,6 +6,50 @@
   box-sizing: border-box;
 }
 
+:root {
+  --font-clr: #fff;
+}
+
 body {
   background: #333;
+  color: var(--font-clr);
+  min-height: 100vh;
+}
+
+main {
+  width: 70%;
+  margin: 0 auto;
+}
+
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+header ul li {
+  display: inline-block;
+  margin: 10px;
+}
+header ul li a {
+  text-decoration: none;
+  color: var(--font-clr);
+}
+
+footer {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentDiv {
+  padding: 2rem;
+  margin: 0 auto;
+}
+.contentDiv .imgContainer,
+.contentDiv h1,
+.contentDiv p {
+  margin: 10px;
 }/*# sourceMappingURL=style.css.map */
