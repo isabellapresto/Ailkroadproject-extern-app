@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Only loop over the first two items
         console.log(element);
         const dataDiv = document.createElement("div");
+        dataDiv.classList.add("contentDiv");
         const nameHeader = document.createElement("h1");
         const shortDescription = document.createElement("p");
 
@@ -62,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (document.body) {
-      document.body.appendChild(container);
+      const main = document.querySelector("main");
+      main.appendChild(container);
     } else {
       console.error("Unable to append container element to document body");
     }

@@ -25,19 +25,30 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderData() {
     const localStorageData = JSON.parse(localStorage.getItem("products"));
     const container = document.createElement("div");
-    container.classList.add("contentDiv");
+    container.classList.add("mainDiv");
 
     if (localStorageData) {
       localStorageData.forEach((element) => {
+        const dataDiv = document.createElement("div");
+        dataDiv.classList.add("contentDiv");
         const nameHeader = document.createElement("h1");
+        const price = document.createElement("p");
+        const link = document.createElement("a");
+        link.innerHTML = "Link till produkten";
+
+        link.setAttribute("href", element.permalink);
+        link.setAttribute("target", "_blank");
+        const linkContainer = document.createElement("div");
+        linkContainer.classList.add("storeLink");
+        linkContainer.appendChild(link);
         const shortDescription = document.createElement("p");
 
         nameHeader.innerHTML = element.name;
-        shortDescription.innerHTML = element.description;
+        price.innerHTML = `Pris: ${element.price}`;
+        shortDescription.innerHTML = element.post_excerpt_stackable;
 
         const imgContainer = document.createElement("div");
         imgContainer.classList.add("imgContainer");
-        container.appendChild(imgContainer);
 
         // grab the first image from each product and set its source
         if (element.images && element.images.length > 0) {
@@ -46,9 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
           img.setAttribute("src", firstImage);
           imgContainer.appendChild(img);
         }
-
-        container.appendChild(nameHeader);
-        container.appendChild(shortDescription);
+        dataDiv.appendChild(imgContainer);
+        dataDiv.appendChild(nameHeader);
+        dataDiv.appendChild(price);
+        dataDiv.appendChild(shortDescription);
+        dataDiv.appendChild(linkContainer);
+        container.appendChild(dataDiv);
       });
     } else {
       container.innerHTML = "No data found in local storage";
