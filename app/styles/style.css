@@ -8,10 +8,12 @@
 
 :root {
   --font-clr: #fff;
+  --background-clr: #333;
+  --decoration-clr: red;
 }
 
 body {
-  background: #333;
+  background: var(--background-clr);
   color: var(--font-clr);
   min-height: 100vh;
 }
@@ -23,21 +25,45 @@ main {
 }
 
 header {
-  height: 100px;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  padding: 10px;
+  border-bottom: 2px solid var(--font-clr);
 }
 header ul li {
   display: inline-block;
+  position: relative;
   margin: 10px;
 }
 header ul li a {
   text-decoration: none;
   color: var(--font-clr);
 }
+header ul li::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--decoration-clr);
+  transition: width 0.3s ease;
+}
+header ul li:hover::after {
+  width: 100%;
+}
+header #logo {
+  width: 200px;
+  height: 100px;
+  background-image: url(/Logga.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 footer {
+  border-top: 2px solid var(--font-clr);
   height: 100px;
   width: 100%;
   display: flex;
@@ -47,7 +73,7 @@ footer {
 
 .mainDiv .contentDiv {
   padding: 1rem;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid var(--font-clr);
 }
 
 .imgContainer img {
@@ -68,4 +94,13 @@ footer {
 
 .listAnsvarig {
   margin: 10px;
+}
+
+.indexMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.indexMain .introDiv h1 {
+  margin-bottom: 10px;
 }/*# sourceMappingURL=style.css.map */
