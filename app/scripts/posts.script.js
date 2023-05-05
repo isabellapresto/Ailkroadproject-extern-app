@@ -9,7 +9,7 @@ if (localStorage.getItem("posts")) {
   };
 
   fetch(
-    "http://localhost/SilkRoadTwo/wp-json/wp/v2/posts?oauth_consumer_key=ck_aa8f876f0bccfed923354648302d677eca4542c1&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1683188597&oauth_nonce=zctn8tCrmp9&oauth_version=1.0&oauth_signature=VCqLyCSPPU%252BWqOZwh%252F4M7M%252BwOQ0%253D",
+    "http://localhost/SilkRoadTwo/wp-json/wp/v2/posts?oauth_consumer_key=ck_aa8f876f0bccfed923354648302d677eca4542c1&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1683286724&oauth_nonce=wmOE3K2RdKS&oauth_version=1.0&oauth_signature=6Ds1CrXtxt4CVu5hCwurTqy%252Bbqc%253D",
     requestOptions
   )
     .then((response) => response.json())

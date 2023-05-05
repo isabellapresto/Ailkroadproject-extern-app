@@ -9,7 +9,7 @@ if (localStorage.getItem("products")) {
   };
 
   fetch(
-    "http://localhost/SilkRoadTwo/wp-json/wc/v3/products?oauth_consumer_key=ck_aa8f876f0bccfed923354648302d677eca4542c1&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1683118800&oauth_nonce=WNSp6skTTDr&oauth_version=1.0&oauth_signature=Py8sX0W%252FcQROlm1M01%252FgOpDT1h8%253D",
+    "http://localhost/SilkRoadTwo/wp-json/wc/v3/products?oauth_consumer_key=ck_fd11ad2dc78f051ee84accc5924d3c79b5b9a02f&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1683287441&oauth_nonce=nFEth4ubex1&oauth_version=1.0&oauth_signature=StsW9YmTGFuWS6Qob%252BRUHxXXL1s%253D",
     requestOptions
   )
     .then((response) => response.json())
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const container = document.createElement("div");
     container.classList.add("mainDiv");
 
-    if (localStorageData) {
+    if (Array.isArray(localStorageData)) {
       localStorageData.forEach((element) => {
         const dataDiv = document.createElement("div");
         dataDiv.classList.add("contentDiv");
